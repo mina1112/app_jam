@@ -1,19 +1,49 @@
 package app.kato.nim.quiz
 
 import android.content.Intent
+import android.content.IntentSender
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import androidx.core.view.isVisible
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 class QuizActivity : AppCompatActivity() {
+//残り時間のセット
+    var second = 10
+//タイマーをセットする
+    val timer : CountDownTimer = object : CountDownTimer(10000,1000) {
+//タイマーが終了するときに呼ばれる
+        override fun onFinish() {
+            //残り時間をリセット
+            second = 10
+            //時間の表示をもとに戻す
+            secondText.text = second.toString()
+
+            val timeoverIntent: Intent = Intent(this, TimeOver::class.java)
+            startActivity(timeoverIntent)
+
+
+
+        override fun onTick(millisUntilFinished: Long){
+            //残り時間を1秒ずつ減らして表示
+            second = second - 1
+            secondText.text = second.toString()
+        }
+
+    }
+
+
+
+
 
     val quizLists: List<List<String>> = listOf(
 
-        listOf("Androidコースのキャラクターの名前は？","ランディ","フィル","ドロイド","ランディ"),
-        listOf("Androidアプリを開発する言語はどれ？","JavaScript","Kotlin","Swift","Kotlin"),
-        listOf("ImageViewは何を扱える要素？","文字","音声","画像","画像")
+        listOf("10+8+5=？","18","21","23","23"),
+        listOf("31+16+2=？","47","49","51","49"),
+        listOf("108+23+16=？","137","147","157","147")
 
     )
 
@@ -29,43 +59,57 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        showQuestion()
+        //残り時間を表示する
+        secondText.text = second.toString()
 
-        answerButton1.setOnClickListener {
 
-            checkAnswer(answerButton1.text.toString())
-        }
+        //タイマーのカウントを開始する。
+        timer.start()
 
-        answerButton2.setOnClickListener {
-            checkAnswer(answerButton2.text.toString())
-        }
 
-        answerButton3.setOnClickListener {
-            checkAnswer(answerButton3.text.toString())
-        }
 
-        nextButton.setOnClickListener {
-            if (quizCount == quizLists.size) {
 
-                val resultIntent: Intent = Intent(this, ResultActivity::class.java)
-                resultIntent.putExtra("QuizCount", quizLists.size)
-                resultIntent.putExtra("CorrectCount", correctCount)
-                startActivity(resultIntent)
 
-            } else {
+            showQuestion()
 
-                judgeImage.isVisible = false
-                nextButton.isVisible = false
+            answerButton1.setOnClickListener {
 
-                answerButton1.isEnabled = true
-                answerButton2.isEnabled = true
-                answerButton3.isEnabled = true
-
-                correctAnswerText.text = ""
-
-                showQuestion()
-
+                checkAnswer(answerButton1.text.toString())
             }
+
+            answerButton2.setOnClickListener {
+                checkAnswer(answerButton2.text.toString())
+            }
+
+            answerButton3.setOnClickListener {
+                checkAnswer(answerButton3.text.toString())
+            }
+
+
+
+            nextButton.setOnClickListener {
+                if (quizCount == quizLists.size) {
+
+                    val resultIntent: Intent = Intent(this, ResultActivity::class.java)
+                    resultIntent.putExtra("QuizCount", quizLists.size)
+                    resultIntent.putExtra("CorrectCount", correctCount)
+                    startActivity(resultIntent)
+
+                } else {
+
+                    judgeImage.isVisible = false
+                    nextButton.isVisible = false
+
+                    answerButton1.isEnabled = true
+                    answerButton2.isEnabled = true
+                    answerButton3.isEnabled = true
+
+                    correctAnswerText.text = ""
+
+                    showQuestion()
+
+                }
+
         }
 
     }
