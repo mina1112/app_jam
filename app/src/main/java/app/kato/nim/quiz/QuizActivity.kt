@@ -9,8 +9,11 @@ import android.util.Log
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_quiz.*
+import kotlinx.android.synthetic.main.activity_result.*
 
 class QuizActivity : AppCompatActivity() {
+
+/*
 //残り時間のセット
     var second = 10
 //タイマーをセットする
@@ -24,13 +27,15 @@ class QuizActivity : AppCompatActivity() {
 
 
         //thisに@QuizActivityをつける！！！！！！！！！！！
+        //時間切れ画面
         val timeoverIntent: Intent = Intent(this@QuizActivity, TimeOver::class.java)
         startActivity(timeoverIntent)
 
 
     }
+*/
 
-
+/*
     override fun onTick(millisUntilFinished: Long) {
         //残り時間を1秒ずつ減らして表示
         second = second - 1
@@ -38,7 +43,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
 }
-
+*/
 
     val quizLists: List<List<String>> = listOf(
 
@@ -56,17 +61,25 @@ class QuizActivity : AppCompatActivity() {
 
     var correctCount: Int = 0
 
+
+    //最初に表示する文字
+    var falseCount: Int = 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
+        //まちがい　赤字のはidつくる
+       /* val falseCount: Int = intent.getIntExtra("falseCount", 0)
+        falseCountText.text = falseCount.toString() */
+
         //残り時間を表示する
-        secondText.text = second.toString()
+        /*secondText.text = second.toString()
 
 
         //タイマーのカウントを開始する。
         timer.start()
-
+*/
 
 
 
@@ -128,12 +141,26 @@ class QuizActivity : AppCompatActivity() {
 
     }
 
+
+    //答えをチェックする
     fun checkAnswer(answerText: String) {
         if (answerText == correctAnswer) {
             judgeImage.setImageResource(R.drawable.maru_image)
             correctCount ++
         }else {
             judgeImage.setImageResource(R.drawable.batu_image)
+
+            falseCount =falseCount - 1
+
+            countText.text = falseCount.toString()
+
+            if(falseCount == 0) {
+                val timeoverIntent: Intent = Intent(this@QuizActivity, TimeOver::class.java)
+                startActivity(timeoverIntent)
+            } else {
+
+            }
+
         }
         showAnsewer()
 
@@ -149,5 +176,9 @@ class QuizActivity : AppCompatActivity() {
         answerButton2.isEnabled = false
         answerButton3.isEnabled = false
     }
+
+
+
+
 
 }

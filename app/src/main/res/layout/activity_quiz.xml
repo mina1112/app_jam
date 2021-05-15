@@ -7,27 +7,28 @@
     tools:context=".QuizActivity">
 
     <TextView
-        android:id="@+id/timeLabelText"
+        android:id="@+id/lifeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="10dp"
-        android:text="秒"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="48dp"
+        android:text="LIFE"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/quizText"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/countText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/secondText"
+        android:id="@+id/countText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="sans-serif-black"
-        android:text="0"
-        android:textSize="80sp"
+        android:text="2"
+        android:textSize="72sp"
         app:layout_constraintBottom_toTopOf="@+id/quizText"
-        app:layout_constraintEnd_toStartOf="@+id/timeLabelText" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/quizText"
