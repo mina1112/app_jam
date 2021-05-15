@@ -15,28 +15,29 @@ class QuizActivity : AppCompatActivity() {
     var second = 10
 //タイマーをセットする
     val timer : CountDownTimer = object : CountDownTimer(10000,1000) {
-//タイマーが終了するときに呼ばれる
-        override fun onFinish() {
-            //残り時間をリセット
-            second = 10
-            //時間の表示をもとに戻す
-            secondText.text = second.toString()
-
-            val timeoverIntent: Intent = Intent(this, TimeOver::class.java)
-            startActivity(timeoverIntent)
+    //タイマーが終了するときに呼ばれる
+    override fun onFinish() {
+        //残り時間をリセット
+        second = 10
+        //時間の表示をもとに戻す
+        secondText.text = second.toString()
 
 
+        //thisに@QuizActivityをつける！！！！！！！！！！！
+        val timeoverIntent: Intent = Intent(this@QuizActivity, TimeOver::class.java)
+        startActivity(timeoverIntent)
 
-        override fun onTick(millisUntilFinished: Long){
-            //残り時間を1秒ずつ減らして表示
-            second = second - 1
-            secondText.text = second.toString()
-        }
 
     }
 
 
+    override fun onTick(millisUntilFinished: Long) {
+        //残り時間を1秒ずつ減らして表示
+        second = second - 1
+        secondText.text = second.toString()
+    }
 
+}
 
 
     val quizLists: List<List<String>> = listOf(
