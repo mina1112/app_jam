@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1BCE77"
+    android:background="#67C7D4"
     tools:context=".TimeOver">
 
     <TextView

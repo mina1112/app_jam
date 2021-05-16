@@ -24,6 +24,8 @@ class QuizActivity : AppCompatActivity() {
         second = 10
         //時間の表示をもとに戻す
         secondText.text = second.toString()
+        //falsecountをへらす
+        falseCount =falseCount - 1
 
 
         //thisに@QuizActivityをつける！！！！！！！！！！！

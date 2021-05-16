@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:background="#FFFFFF"
+    android:backgroundTint="#38383E"
     tools:context=".QuizActivity">
 
     <TextView
@@ -13,6 +16,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="48dp"
         android:text="LIFE"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/countText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +30,7 @@
         android:layout_marginBottom="4dp"
         android:fontFamily="sans-serif-black"
         android:text="2"
+        android:textColor="#6495ED"
         android:textSize="72sp"
         app:layout_constraintBottom_toTopOf="@+id/quizText"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -38,6 +43,7 @@
         android:layout_marginTop="132dp"
         android:layout_marginEnd="32dp"
         android:text="TextView"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,54 +57,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quizText" />
-
-    <Button
-        android:id="@+id/answerButton1"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#03A9F4"
-        android:text="BUTTON"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/correctAnswerText" />
-
-    <Button
-        android:id="@+id/answerButton2"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#03A9F4"
-        android:text="BUTTON"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerButton1" />
-
-    <Button
-        android:id="@+id/answerButton3"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#03A9F4"
-        android:text="BUTTON"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/answerButton2" />
 
     <Button
         android:id="@+id/nextButton"
@@ -128,4 +86,58 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/maru_image" />
+
+    <Button
+        android:id="@+id/answerButton1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_rounded_circle"
+        android:backgroundTint="#03A9F4"
+        android:text="BUTTON"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:backgroundTint="#67C7D4"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintEnd_toStartOf="@+id/answerButton2" />
+
+    <Button
+        android:id="@+id/answerButton2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_rounded_circle"
+        android:backgroundTint="#03A9F4"
+        android:text="BUTTON"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:backgroundTint="#67C7D4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/answerButton3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_rounded_circle"
+        android:backgroundTint="#03A9F4"
+        android:text="BUTTON"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:backgroundTint="#67C7D4"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintStart_toEndOf="@+id/answerButton2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

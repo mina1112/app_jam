@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#38383E"
+    android:backgroundTint="#38383E"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,6 +15,7 @@
         android:layout_marginTop="180dp"
         android:fontFamily="sans-serif-black"
         android:text="暗算アプリ"
+        android:textColor="#FFFFFF"
         android:textSize="72sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +26,7 @@
         android:layout_width="280dp"
         android:layout_height="80dp"
         android:layout_marginBottom="80dp"
-        android:backgroundTint="#19C878"
+        android:backgroundTint="#67C7D4"
         android:text="START"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
